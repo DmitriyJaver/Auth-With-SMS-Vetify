@@ -25,4 +25,24 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+    public function showSettings()
+    {
+        $user = auth()->user();
+        return view('settings', compact('user'));
+    }
+
+    public function storeSettings()
+    {
+        $user = auth()->user();
+
+        if ($user->use_sms_verify == false) {
+            $user->use_sms_verify = true;
+            $user->save();
+        } else {
+            $user->use_sms_verify = false;
+            $user->save();
+        }
+        return back();
+    }
 }
