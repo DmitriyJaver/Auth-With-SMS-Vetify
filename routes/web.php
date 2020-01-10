@@ -21,3 +21,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('home/settings', 'HomeController@showSettings')->name('settings');
 Route::post('home/settings', 'HomeController@storeSettings')->name('settings');
+
+Route::get('/sms-verify', 'Auth\SmsCodeVerificationController@show')->name('sms-verify');
+Route::post('/sms-verify', 'Auth\SmsCodeVerificationController@login');

@@ -14,7 +14,9 @@ class UpdateUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->boolean('use_sms_verify');
+            $table->string('country_code', 4)->nullable();
+            $table->string('phone')->nullable();
+            $table->boolean('use_sms_verify')->default(false);
         });
     }
 
